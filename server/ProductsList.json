@@ -1,0 +1,280 @@
+[
+    {
+        "images": [
+            "https://m.media-amazon.com/images/I/61yY7B+O5AS._AC_SX679_.jpg",
+            "https://m.media-amazon.com/images/I/71+GEsWLIzS._AC_SL1500_.jpg",
+            "https://m.media-amazon.com/images/I/61CJ7WrZZOL._AC_SL1500_.jpg",
+            "https://m.media-amazon.com/images/I/71ofaJ4-GSL._AC_SL1500_.jpg"
+        ],
+        "name": "Samsung Electronics Galaxy Watch",
+        "price": 308,
+        "amount": 1,
+        "description": "Take care of your heart with accurate ECG monitoring and keep an eye on possible atrial fibrillation, a common form of irregular heart rhythm; Share personalized readings with your doctor using the Samsung Health Monitor app on your Galaxy phone. Get the most out of every exercise session with advanced workout tracking that recognizes 6 popular activities, from running to rowing to swimming, automatically in just 3 minutes; Stay motivated by connecting to live coaching sessions via your smartphone",
+        "category": "men",
+        "quality": "best seller"
+    },
+    {
+        "images": [
+            "https://m.media-amazon.com/images/I/61xR1QRzYlL._AC_UX466_.jpg",
+            "https://m.media-amazon.com/images/I/619go3vkSyL._AC_UX522_.jpg",
+            "https://m.media-amazon.com/images/I/71sJ7AOJGPL._AC_UX522_.jpg",
+            "https://m.media-amazon.com/images/I/61CR8PwdgCL._AC_UX679_.jpg"
+        ],
+        "name": "Bulova Modern Quartz Men's Watch",
+        "price": 405,
+        "amount": 1,
+        "description": "Black ip stainless steel with three diamonds on black dial. Three-hand date feature, metalized edge-to-edge curved crystal, screw-back case, black ip stainless steel bracelet with deployant closure, and water resistance to 30 meters, Quartz Movement",
+        "category": "men",
+        "quality": "most popular"
+    },
+    {
+        "images": [
+            "https://m.media-amazon.com/images/I/81Kqndm9PnL._AC_UY500_.jpg",
+            "https://m.media-amazon.com/images/I/61R00JpRFiL._AC_UX466_.jpg",
+            "https://m.media-amazon.com/images/I/71T6rTAENdL._AC_UX466_.jpg",
+            "https://m.media-amazon.com/images/I/6100cyr2tjL._AC_UX679_.jpg"
+        ],
+        "name": "HUGO Men's Stainless Steel Quartz Watch",
+        "price": 71,
+        "amount": 1,
+        "description": "DARE TO GO FURTHER and try something new. The HUGO #DARE collection pushes and enables you to try new challenges, solve harder problems, and to surpass what you thought was ‘your best’. Don’t get discouraged by what is out there, this timepiece will assist you and provide all the courage you need to push your limits to a new level. QUALITY MATERIALS, EYE-CATCHING STYLE: 3-hand 42 mm Black IP Case and Bracelet with Black Dial",
+        "category": "men",
+        "quality": "best seller"
+    },
+    {
+        "images": [
+            "https://m.media-amazon.com/images/I/71ytnQhackL._AC_UX466_.jpg",
+            "https://m.media-amazon.com/images/I/71cey55DndL._AC_UX466_.jpg",
+            "https://m.media-amazon.com/images/I/71VF+L7oe1L._AC_UX466_.jpg",
+            "https://m.media-amazon.com/images/I/71RJrwcV5UL._AC_UX522_.jpg"
+        ],
+        "name": "Fossil Gen 5 Carlyle Stainless Steel Watch",
+        "price": 100,
+        "amount": 1,
+        "description": "Hybrid Smart watch HR works with iPhone and Android Phones. Enjoy long lasting battery. This is a smart watch that can last up to 2+ weeks on a single charge. Magnetic USB charger included. **Varies based on usage and after updates install**. Receive and view smartphone notifications and alerts, see calendar and weather updates, control your music and more. An innovative timepiece designed with integrated mechanical hands and an always-on read-out display showing curated information at a glance; Case size: 45mm; Band size: 22mm; interchangeable with all Fossil 22mm bands; water resistant to 100ft (30m); imported",
+        "category": "men",
+        "quality": "most popular"
+    },
+    {
+        "images": [
+            "https://m.media-amazon.com/images/I/71sMS5i3wxL._AC_UX466_.jpg",
+            "https://m.media-amazon.com/images/I/71JmFaHZMJL._AC_UX466_.jpg",
+            "https://m.media-amazon.com/images/I/71FAq1x9Y1L._AC_UX679_.jpg",
+            "https://m.media-amazon.com/images/I/51Y9Wr4whuL._AC_UX679_.jpg"
+        ],
+        "name": "Runway Stainless Steel Quartz Watch",
+        "price": 189,
+        "amount": 1,
+        "description": "From jet setting adventures to the 9 to 5 grind, the iconic Slim Runway watch collection by Michael Kors provide luxurious style with a modern splash of trend-right touches. Featuring a 44mm case size, 22mm band size, hardened scratch-resistant mineral crystal glass, 3 hand quartz movement, imported. Round sunray dial; Slim profile 12mm case. black plated bracelet with a brushed and polished finish. Bracelet strap with deployant closure deployment closure. Water resistant to 50m (165ft): in general, suitable for short periods of recreational swimming, but not diving or snorkeling",
+        "category": "men",
+        "quality": "best seller"
+    },
+    {
+        "images": [
+            "https://m.media-amazon.com/images/I/81I3OFUUlwL._AC_UX466_.jpg",
+            "https://m.media-amazon.com/images/I/7153lFzDbiL._AC_UX522_.jpg",
+            "https://m.media-amazon.com/images/I/81o1K2Ja6dL._AC_UX522_.jpg",
+            "https://m.media-amazon.com/images/I/81KFRVmqVOL._AC_UX522_.jpg"
+        ],
+        "name": "Timex Easy Reader 38mm Leather Strap Watch",
+        "price": 44,
+        "amount": 1,
+        "description": "Perfect Fit self-adjustable silver-tone 20mm stainless steel expansion band fits up to 8-inch wrist circumference. Blue easy-to-read dial with white full Arabic numerals; date window at 3 o'clock. Silver-tone 35mm brass case with mineral glass crystal. Indiglo light-up watch dial, Water resistant to 30m (100ft): in general, withstands splashes or brief immersion in water, but not suitable for swimming or bathing",
+        "category": "men",
+        "quality": "most popular"
+    },
+    {
+        "images": [
+            "https://m.media-amazon.com/images/I/811T2K2ejzL._AC_UX466_.jpg",
+            "https://m.media-amazon.com/images/I/71ozCQPNEYL._AC_UX522_.jpg",
+            "https://m.media-amazon.com/images/I/81o1K2Ja6dL._AC_UX522_.jpg",
+            "https://m.media-amazon.com/images/I/81KFRVmqVOL._AC_UX522_.jpg"
+        ],
+        "name": "Fossil Men's Machine Watch",
+        "price": 85,
+        "amount": 1,
+        "description": "Donerton Smart Watch, Fitness Tracker for Android Phones, Fitness Tracker with Heart Rate and Sleep Monitor, Activity Tracker with IP67 Waterproof Pedometer Smartwatch with Step Counter for Women Men",
+        "category": "men",
+        "quality": "most popular"
+    },
+    {
+        "images": [
+            "https://m.media-amazon.com/images/I/51zHa5+OjPL._AC_UX466_.jpg",
+            "https://m.media-amazon.com/images/I/41CBpP-4AmL._AC_UX522_.jpg",
+            "https://m.media-amazon.com/images/I/91gLNJ4WhdS._AC_UX522_.jpg",
+            "https://m.media-amazon.com/images/I/81ndPjHAWmL._AC_UX522_.jpg"
+        ],
+        "name": "Fossil Men's The Minimalist Watch",
+        "price": 59,
+        "amount": 1,
+        "description": "Fossil has always been inspired by American creativity and ingenuity. Since 1984, we’ve strived to bring new life into the industry by making quality, fashionable watches and accessories that were both fun and accessible. Mastering the balance of vintage inspiration with modern design, The Minimalist timepiece represents the minimalistic aesthetic from its clean face to its slimmed-down case, which sits effortlessly against the wrist. Smoke stainless steel case with gray sunray dial; two-tone silver and smoke stainless steel bracelet band with two-pusher foldover clasp closure; interchangeable with all 22mm Fossil watch bands",
+        "category": "men",
+        "quality": "best seller"
+    },
+    {
+        "images": [
+            "https://m.media-amazon.com/images/I/81jPf73N-uS._AC_SX466._SX._UX._SY._UY_.jpg",
+            "https://m.media-amazon.com/images/I/81SKhaVgCQL._AC_SX466._SX._UX._SY._UY_.jpg",
+            "https://m.media-amazon.com/images/I/71tc6CIZhBS._AC_SX522._SX._UX._SY._UY_.jpg",
+            "https://m.media-amazon.com/images/I/616jbCQCIqL._AC_SX679._SX._UX._SY._UY_.jpg"
+        ],
+        "name": "Citizen Quartz Men's Watch,",
+        "price": 262,
+        "amount": 1,
+        "description": "LIGHT-POWERED ECO-DRIVE: Converts any light, whether natural or artificial, into energy. Energy is stored in a permanently rechargeable power cell. The watch recharges continuously in any light to run forever, with no battery changes required, ever. WATER RESISTANT TO 200 M: This Citizen watch is water resistant to 200 meters (660 ft). FEATURES: Black polyurethane strap with buckle closure. Stainless steel case, green dial and mineral crystal. FUNCTIONS: 3 hand with date. Screw-back case and screw-down crown. Luminous hands and markers.",
+        "category": "men",
+        "quality": "most popular"
+    },
+    {
+        "images": [
+            "https://m.media-amazon.com/images/I/81E2IhbmPBL._AC_UX466_.jpg",
+            "https://m.media-amazon.com/images/I/7199ovR1PSL._AC_UX522_.jpg",
+            "https://m.media-amazon.com/images/I/819RFVDl92L._AC_UX522_.jpg",
+            "https://m.media-amazon.com/images/I/71woEuhzEYL._AC_UX522_.jpg"
+        ],
+        "name": "Fossil Men's Townsman Stainless Steel Watch",
+        "price": 119,
+        "amount": 1,
+        "description": "Fossil has always been inspired by American creativity and ingenuity. Since 1984, we’ve strived to bring new life into the industry by making quality, fashionable watches and accessories that were both fun and accessible. Inspired by classic, turn-of-the-century wrist watches, Copeland is a minimalist take on the simplicity of a classic wirelug case. The sophisticated dial makes this a versatile timepiece for both casual and dress styles. Case size: 42mm; Band size: 22mm; quartz movement with 3-hand analog display; mineral crystal lens resists scratches; imported",
+        "category": "men",
+        "quality": "best seller"
+    },
+    {
+        "images": [
+            "https://m.media-amazon.com/images/I/81-Jdy1NNeL._AC_UX466_.jpg",
+            "https://m.media-amazon.com/images/I/81RQfBwtutL._AC_UX522_.jpg",
+            "https://m.media-amazon.com/images/I/910JRpMYCOL._AC_UX522_.jpg",
+            "https://m.media-amazon.com/images/I/81YCSkAV7lL._AC_UX522_.jpg"
+        ],
+        "name": "Fossil Men's Steel Slim Casual Quartz Watch",
+        "price": 39,
+        "amount": 1,
+        "description": "Fossil has always been inspired by American creativity and ingenuity. Since 1984, we’ve strived to bring new life into the industry by making quality, fashionable watches and accessories that were both fun and accessible. From desk to dinner, daily commute to world travel, think of the Neutra Chrono as his best-dressed essential. Crafted with a minimal, mid-century dial design, it’s a sleek, pulled-together style that never takes itself too seriously. Rose gold-tone stainless steel case with black dial; genuine black leather band with buckle closure; interchangeable with all 22mm Fossil watch bands",
+        "category": "men",
+        "quality": "best seller"
+    },
+    {
+        "images": [
+            "https://m.media-amazon.com/images/I/81tJv95p0HL._AC_UX466_.jpg",
+            "https://m.media-amazon.com/images/I/71t4j01fFAL._AC_UX522_.jpg",
+            "https://m.media-amazon.com/images/I/81q0ZyCw9xL._AC_UX522_.jpg",
+            "https://m.media-amazon.com/images/I/81q77kOB1LL._AC_UX522_.jpg"
+        ],
+        "name": "Fossil Men's Mechanical Automatic Watch",
+        "price": 139,
+        "amount": 1,
+        "description": "Fossil has always been inspired by American creativity and ingenuity. Since 1984, we’ve strived to bring new life into the industry by making quality, fashionable watches and accessories that were both fun and accessible. Taking our cues from 1960s-era architectural and automotive design, our Townsman has a clean, symmetrical style and elevated construction. Elegantly vaulted hands, beveled indices and a shapely case make this timepiece a classic for decades to come. Smoke stainless steel case with gray dial; genuine brown leather band with buckle closure; interchangeable with all 22mm Fossil watch bands",
+        "category": "men",
+        "quality": "most popular"
+    },
+    {
+        "images": [
+            "https://m.media-amazon.com/images/I/6158BXi22sL._AC_UX466_.jpg",
+            "https://m.media-amazon.com/images/I/51l4UuZIHDL._AC_UX522_.jpg",
+            "https://m.media-amazon.com/images/I/51wSrdBUnhL._AC_UX522_.jpg",
+            "https://m.media-amazon.com/images/I/61EH9eoq0fL._AC_UX679_.jpg"
+        ],
+        "name": "Michael Kors Pyper Three Hand Steel Watch",
+        "price": 89.99,
+        "amount": 1,
+        "description": "Donerton Smart Watch, Fitness Tracker for Android Phones, Fitness Tracker with Heart Rate and Sleep Monitor, Activity Tracker with IP67 Waterproof Pedometer Smartwatch with Step Counter for Women Men",
+        "category": "women",
+        "quality": "best seller"
+    },
+    {
+        "images": [
+            "https://m.media-amazon.com/images/I/81pqmuNN9hL._AC_UX466_.jpg",
+            "https://m.media-amazon.com/images/I/71l85GKmBaL._AC_UX522_.jpg",
+            "https://m.media-amazon.com/images/I/71lG-LMhA7L._AC_UX522_.jpg",
+            "https://m.media-amazon.com/images/I/81sg-8YPLkL._AC_UX522_.jpg"
+        ],
+        "name": "Fossil Women's Riley Multifunction Watch",
+        "price": 78.73,
+        "amount": 1,
+        "description": "Fossil has always been inspired by American creativity and ingenuity. Since 1984, we’ve strived to bring new life into the industry by making quality, fashionable watches and accessories that were both fun and accessible. Marrying the elegance and sophistication of a traditional Roman numeral dial with the casual styling of a wire-lug case, The Copeland is designed to be a versatile and practical easy-wear dress option. Case size: 34mm; Band size: 16mm; quartz movement with 3-hand analog display; hardened mineral crystal lens resists scratches; imported",
+        "category": "women",
+        "quality": "most popular"
+    },
+    {
+        "images": [
+            "https://m.media-amazon.com/images/I/715ocbl0Q1L._AC_UX466_.jpg",
+            "https://m.media-amazon.com/images/I/71E7qrRBgaL._AC_UX522_.jpg",
+            "https://m.media-amazon.com/images/I/81I3icSrWiL._AC_UX522_.jpg",
+            "https://m.media-amazon.com/images/I/61Rs0fLfnbL._AC_UX679_.jpg"
+        ],
+        "name": "Michael Kors Women's Lady Nini Chain Watch",
+        "price": 131.38,
+        "amount": 1,
+        "description": "From jet setting adventures to the 9 to 5 grind, the iconic Mini Slim Runway watch collection by Michael Kors provide luxurious style with a modern splash of trend-right touches. Featuring a 33mm case, 16mm band width, scratch-resistant mineral crystal glass, Quartz movement with 2-hand analog display, imported. Round stainless steel case with a gold dial gold stainless steel bracelet with deployant closure. Water resistant to 50m (165ft): in general, suitable for short periods of recreational swimming, but not diving or snorkeling",
+        "category": "women",
+        "quality": "best seller"
+    },
+    {
+        "images": [
+            "https://m.media-amazon.com/images/I/81giIgBedaL._AC_UX466_.jpg",
+            "https://m.media-amazon.com/images/I/71vsaVhZuuL._AC_UX522_.jpg",
+            "https://m.media-amazon.com/images/I/71YsihMuAfL._AC_UX522_.jpg",
+            "https://m.media-amazon.com/images/I/81Yrj889ObL._AC_UX522_.jpg"
+        ],
+        "name": "Michael Women's Gen Touchscreen Smartwatch",
+        "price": 78.73,
+        "amount": 1,
+        "description": "Donerton Smart Watch, Fitness Tracker for Android Phones, Fitness Tracker with Heart Rate and Sleep Monitor, Activity Tracker with IP67 Waterproof Pedometer Smartwatch with Step Counter for Women Men",
+        "category": "women",
+        "quality": "most popular"
+    },
+    {
+        "images": [
+            "https://m.media-amazon.com/images/I/71RhpUxP8ZL._AC_UX466_.jpg",
+            "https://m.media-amazon.com/images/I/81woe7DEDuL._AC_UX522_.jpg",
+            "https://m.media-amazon.com/images/I/81nYpmMNYmL._AC_UX522_.jpg",
+            "https://m.media-amazon.com/images/I/71kPpwD6xKL._AC_UX679_.jpg"
+        ],
+        "name": "Michael Kors Women's Ritz Crystal Topring",
+        "price": 134.71,
+        "amount": 1,
+        "description": "Donerton Smart Watch, Fitness Tracker for Android Phones, Fitness Tracker with Heart Rate and Sleep Monitor, Activity Tracker with IP67 Waterproof Pedometer Smartwatch with Step Counter for Women Men. Silver-tone round watch with crystal-adorned case and bezel with 60-second, 60-minute, 24-hour chronograph subdials. 39 mm stainless steel case with mineral dial window featuring date window at six o'clock",
+        "category": "women",
+        "quality": "most popular"
+    },
+    {
+        "images": [
+            "https://m.media-amazon.com/images/I/61lk-YxTUAL._AC_UX466_.jpg",
+            "https://m.media-amazon.com/images/I/51+WUejn46L._AC_UX522_.jpg",
+            "https://m.media-amazon.com/images/I/51A7yXgPEnL._AC_UX522_.jpg",
+            "https://m.media-amazon.com/images/I/51T1b0IS7IL._AC_UX522_.jpg"
+        ],
+        "name": "Fossil Women Dress Quartz Watch",
+        "price": 149,
+        "amount": 1,
+        "description": "Fossil has always been inspired by American creativity and ingenuity. Since 1984, we’ve strived to bring new life into the industry by making quality, fashionable watches and accessories that were both fun and accessible. Riley plays with proportion in a sophisticated way. With a classic shape and sporty features, Riley is a style that transcends the season. Case size: 38mm; Band size: 18mm; quartz movement with multifunction display; hardened mineral crystal lens resists scratches; imported",
+        "category": "women"
+    },
+    {
+        "images": [
+            "https://m.media-amazon.com/images/I/61MliEjiBaL._AC_UX466_.jpg",
+            "https://m.media-amazon.com/images/I/61XCsUj8jgL._AC_UX522_.jpg",
+            "https://m.media-amazon.com/images/I/61HdH4jJQcL._AC_UX522_.jpg",
+            "https://m.media-amazon.com/images/I/61nm9QDAJ2L._AC_UX522_.jpg"
+        ],
+        "name": "CakCity Kids Watches for Boys Girls",
+        "price": 16.99,
+        "amount": 1,
+        "description": "Digital Watch: Sport dial design for kids, military style outlook. Large Dial and numbers with light, show time clear in the dark. Use EL Lamp, Press LIGHT button to see the time clearly in the light. Multifunctional Kids Watch: Alarm Clock, Stopwatch, 50M Waterproof, Shockproof, Calendar, EL Backlight, 12H/24H time etc. This sport watch is perfect fit with all kinds of sports and it's really suitable for boys outdoor play. ",
+        "category": "kids"
+    },
+    {
+        "images": [
+            "https://m.media-amazon.com/images/I/91oFhQaYPoL._AC_UX466_.jpg",
+            "https://m.media-amazon.com/images/I/71QquBf5TFL._AC_UX522_.jpg",
+            "https://m.media-amazon.com/images/I/9186RCqAtAL._AC_UX522_.jpg",
+            "https://m.media-amazon.com/images/I/61nm9QDAJ2L._AC_UX522_.jpg"
+        ],
+        "name": "Timex Time Machines Digital 35mm Watch",
+        "price": 22,
+        "amount": 1,
+        "description": "Donerton Smart Watch, Fitness Tracker for Android Phones, Fitness Tracker with Heart Rate and Sleep Monitor, Activity Tracker with IP67 Waterproof Pedometer Smartwatch with Step Counter for Women Men. Adjustable blue/black/green striped 18mm double-layered nylon strap fits up to 6-inch wrist circumference. Blue and black 35mm resin case with acrylic lens; easy-to-read gray digital display; Indiglo light-up watch dial. Water resistant to 50 m (165 ft): In general, suitable for short periods of recreational swimming, but not diving or snorkeling",
+        "category": "kids"
+    }
+]
+
