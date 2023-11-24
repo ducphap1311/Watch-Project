@@ -67,7 +67,7 @@ export const Footer = () => {
                             </p>
                             <p>
                                 <a
-                                    href="https://www.facebook.com/ducphap1311"
+                                    href="https://www.instagram.com/ducphapho/"
                                     target="_blank"
                                     rel="noreferrer"
                                 >

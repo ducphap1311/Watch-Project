@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-export const Order = ({ name, address, orderTotal, createdAt, amount }) => {
+export const Order = ({_id, name, address, orderTotal, createdAt, amount }) => {
     const date = new Date(createdAt);
     const hours = date.getHours();
     const minutes = date.getMinutes();
@@ -32,6 +33,12 @@ export const Order = ({ name, address, orderTotal, createdAt, amount }) => {
             <td>{amount}</td>
             <td>${orderTotal.toFixed(2)}</td>
             <td>{formattedTime}</td>
+            <td>Shipping</td>
+            <td>
+                <Link to={`/orders/${_id}`} className="order-detail-link">
+                    See detail
+                </Link>
+            </td>
         </tr>
     );
 };

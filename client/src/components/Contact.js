@@ -61,8 +61,7 @@ export const Contact = () => {
                         <div className="location-info">
                             <h3>Location</h3>
                             <p>
-                                319 C16 Lý Thường Kiệt, Phường 15, Quận 11,
-                                Tp.HCM
+                                District 9, Ho Chi Minh City
                             </p>
                         </div>
                     </div>
@@ -118,7 +117,7 @@ export const Contact = () => {
                         ></textarea>
                         {errorMessage && (
                             <p style={{ color: "red" }}>
-                                Please provide valid informations
+                                Please provide necessary informations
                             </p>
                         )}
                         <button type="submit" className="send-btn">

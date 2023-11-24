@@ -9,7 +9,9 @@ import { Loading } from "./Loading";
 
 export const CheckOut = () => {
     const { total, cartItems, amount } = useSelector((store) => store.cart);
-    const [name, setName] = useState("");
+    const [name, setName] = useState(
+        localStorage.getItem("username") ? localStorage.getItem("username") : ""
+    );
     const [city, setCity] = useState("");
     const [citiesList, setCitiesList] = useState([]);
     const [district, setDistrict] = useState("");
@@ -132,9 +134,7 @@ export const CheckOut = () => {
 
     if (isLoading) {
         return <Loading />;
-    }
-
-    if (!token || errorUser) {
+    } else if (!token || errorUser) {
         return (
             <div className="login-to-continue">
                 <p>Please login to continue</p>
@@ -230,7 +230,7 @@ export const CheckOut = () => {
                                     marginBottom: "20px",
                                 }}
                             >
-                                Please provide valid information
+                                Please provide necessary informations
                             </p>
                         )}
                         <button type="submit">place your order</button>

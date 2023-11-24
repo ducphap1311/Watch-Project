@@ -29,7 +29,7 @@ const productSchema = new mongoose.Schema({
     },
     quality: {
         type: String,
-    }
+    },
 },
 { timestamps: true })
 

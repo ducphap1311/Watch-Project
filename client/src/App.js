@@ -13,6 +13,7 @@ import { RegisterPage } from "./pages/RegisterPage";
 import { useLocation } from "react-router-dom";
 import { CheckOutPage } from "./pages/CheckOutPage";
 import { OrdersPage } from "./pages/OrdersPage";
+import { OrderDetailPage } from "./pages/OrderDetailPage";
 
 function App() {
     const dispatch = useDispatch()
@@ -43,6 +44,7 @@ function App() {
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/checkout" element={<CheckOutPage />} />
             <Route path="/orders" element={<OrdersPage />} />
+            <Route path="/orders/:id" element={<OrderDetailPage />} />
         </Routes>
     );
 }

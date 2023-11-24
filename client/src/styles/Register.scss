@@ -10,15 +10,41 @@
         height: fit-content;
         width: 544px;
         padding: 40px;
-        @include flex(column, flex-start, center);
+        // @include flex(column, flex-start, center);
         box-shadow: 0px 0px 25px 10px #F8F8FB;
         .register-title{
             font-size: 32px;
             font-weight: bold;
             margin-bottom: 7px;
+            text-align: center;
         }
-        p{
+        .register-subtitle{
             margin-bottom: 37px;
+            font-size: 17px;
+            color: #9096B2;
+            text-align: center;
+        }
+        
+        .username-container,
+        .email-container,
+        .password-container{
+            margin-bottom: 23px;
+        }
+        .username-error,
+        .email-error,
+        .password-error{
+            text-align: left;
+            color: red;
+            font-size: 13px;
+            margin-top: 5px;
+            margin-bottom: 0;
+        }
+        .user-error{
+            color: red;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .options{
             font-size: 17px;
             color: #9096B2;
             text-align: center;
@@ -43,25 +69,25 @@
         .username-input{
             padding: 15px 13px;
             width: 100%;
-            margin-bottom: 23px;
+            // margin-bottom: 23px;
             border-radius: 5px;
         }
         .email-input{
             padding: 15px 13px;
             width: 100%;
-            margin-bottom: 23px;
+            // margin-bottom: 23px;
             border-radius: 5px;
         }
         .password-input{
             padding: 15px 13px;
             width: 100%;
-            margin-bottom: 23px;
+            // margin-bottom: 23px;
             border-radius: 5px;
         }
         .password-confirm-input{
             padding: 15px 13px;
             width: 100%;
-            margin-bottom: 23px;
+            // margin-bottom: 23px;
             border-radius: 5px;
         }
         .register-btn{

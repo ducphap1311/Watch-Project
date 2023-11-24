@@ -8,6 +8,7 @@ import "../styles/SingleProduct.scss";
 import { addItem } from "../features/cart/cartSlice";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 export const SingleProduct = () => {
     const { id } = useParams();
@@ -118,6 +119,20 @@ export const SingleProduct = () => {
                         >
                             Add to cart
                         </button>
+                        <Link to='/cart' className="buy-btn-container">
+                            <button
+                                className="buy-btn"
+                                onClick={() => {
+                                    dispatch(addItem({ id: _id, amount }));
+                                    toast("Add to cart successfully!", {
+                                        type: "success",
+                                        draggable: false,
+                                    });
+                                }}
+                            >
+                                Buy now
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>

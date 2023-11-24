@@ -3,7 +3,7 @@
 
 .orders {
     font-family: $poppins-font;
-    max-width: 1140px;
+    max-width: 1200px;
     margin: 200px auto;
     padding: 0 20px;
 }
@@ -15,6 +15,7 @@
     }
     margin-bottom: 30px;
     // border-bottom: 1px solid $primary-color;
+    
 }
 
 .orders-information{
@@ -48,14 +49,13 @@ table {
 }
 
 th{
-    // border-bottom: 0.5px solid $primary-color;
     text-align: left;
-    padding: 10px 15px;
+    padding: 10px 0;
 }
 td {
     // border: 1px solid #dddddd;
     text-align: left;
-    padding: 15px;
+    padding: 15px 0;
     font-size: 14px;
 }
 
@@ -63,17 +63,31 @@ tr{
     color: rgb(40, 40, 40);
 }
 
-tr:nth-child(odd) {
-    background-color: #f2f2f2;
-}
+// tr:nth-child(odd) {
+//     background-color: #f2f2f2;
+// }
 
 tr:nth-child(1){
     background-color: transparent;
     color: black;
 }
 
+.order-detail-link{
+    text-decoration: none;
+    color: $primary-color;
+    text-decoration: underline;
+    &:hover{
+        color: $hover-color;
+    }
+}
 @media screen and (max-width: 768px){
     .orders{
         margin-top: 150px;
     }
+    th,
+    td{
+        padding: 10px 15px;
+    }
 }
+
+

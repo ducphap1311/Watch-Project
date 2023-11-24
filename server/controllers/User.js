@@ -36,4 +36,8 @@ const dashboard = async (req, res) => {
     res.status(200).json({ msg: "success" });
 };
 
-module.exports = { register, login, dashboard };
+const getUsers = async(req, res) => {
+    const users = await User.find({})
+    res.status(200).json({users})
+}
+module.exports = { register, login, dashboard, getUsers };

@@ -74,14 +74,18 @@ export const Orders = () => {
                     </div>
                     <div className="overflow-x-auto">
                         <table>
-                            <tbody>
+                            <thead>
                                 <tr>
-                                    <th>Name</th>
+                                    <th>Customer</th>
                                     <th>Address</th>
                                     <th>Products</th>
                                     <th>Cost</th>
                                     <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Detail</th>
                                 </tr>
+                            </thead>
+                            <tbody>
                                 {orders.map((order) => {
                                     return <Order key={order._id} {...order} />;
                                 })}

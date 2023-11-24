@@ -17,11 +17,24 @@
             font-weight: bold;
             margin-bottom: 7px;
         }
-        p{
+        .login-subtitle{
             margin-bottom: 37px;
             font-size: 17px;
             color: #9096B2;
             text-align: center;
+        }
+        .email-error,
+        .password-error{
+            text-align: left;
+            color: red;
+            font-size: 13px;
+            margin-top: 5px;
+            margin-bottom: 0;
+        }
+        .user-error{
+            color: red;
+            text-align: center;
+            margin-bottom: 20px;
         }
         input{
             outline: none;
@@ -40,16 +53,22 @@
                 border-color: $primary-color;
             }
         }
+        .email-container,
+        .password-container{
+            margin-bottom: 23px;
+            width: 100%;
+        }
+
         .email-input{
             padding: 15px 13px;
             width: 100%;
-            margin-bottom: 23px;
+            // margin-bottom: 23px;
             border-radius: 5px;
         }
         .password-input{
             padding: 15px 13px;
             width: 100%;
-            margin-bottom: 23px;
+            // margin-bottom: 23px;
             border-radius: 5px;
         }
         .sign-in-btn{

@@ -8,6 +8,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "babel-preset-react-app": "@babel/plugin-proposal-private-property-in-object",
+    "formik": "^2.4.5",
     "node-sass": "^7.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -17,7 +18,8 @@
     "react-slick": "^0.29.0",
     "react-toastify": "^9.1.3",
     "slick-carousel": "^1.8.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^1.3.2"
   },
   "scripts": {
     "start": "react-scripts start",
