@@ -1,21 +1,21 @@
-@import '_variables';
-@import '_mixin';
+@import "_variables";
+@import "_mixin";
 
-.contact{
+.contact {
     padding: 200px 20px;
     font-family: sans-serif;
-    .contact-container{
+    .contact-container {
         max-width: 1200px;
         margin: 0 auto;
-        .contact-info{
+        .contact-info {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            
+
             .location,
             .phone-number,
-            .email{
+            .email {
                 margin-bottom: 30px;
-                i{
+                i {
                     font-size: 30px;
                     background-color: $primary-color;
                     padding: 10px;
@@ -23,64 +23,84 @@
                     margin-right: 15px;
                 }
             }
-            .location{
+            .location {
                 @include flex(row, flex-start, flex-start);
-                .location-info{
-                    h3{
+                .location-info {
+                    h3 {
                         margin-bottom: 15px;
                     }
                 }
             }
-            .phone-number{
+            .phone-number {
                 @include flex(row, center, flex-start);
-                .phone-number-info{
-                    h3{
+                .phone-number-info {
+                    h3 {
                         margin-bottom: 15px;
                     }
                 }
             }
-            .email{
+            .email {
                 @include flex(row, flex-end, flex-start);
-                .email-info{
-                    h3{
+                .email-info {
+                    h3 {
                         margin-bottom: 15px;
                     }
                 }
             }
         }
-        .contact-message{
+        .contact-message {
             margin: 50px 0;
-            form{
+            .contact-form {
                 @include flex(column, flex-start, center);
                 max-width: 600px;
                 margin: 0 auto;
-                input,
-                textarea{
-                    margin-bottom: 10px;
+                .name-container,
+                .email-container,
+                .phonenumber-container,
+                .location-container,
+                .message-container {
                     width: 100%;
-                    padding: 15px 10px;
-                    background-color: rgb(241, 241, 241);
-                    outline: none;
-                    font-size: 15px;
-                    border: none;
-                    transition: 0.3s ease;
-                    &::placeholder{
-                        font-family: $poppins-font;
+                    margin-bottom: 10px;
+                    .name-input,
+                    .email-input,
+                    .phonenumber-input,
+                    .location-input,
+                    .message-textarea {
+                        width: 100%;
+                        padding: 15px 10px;
+                        background-color: rgb(241, 241, 241);
+                        outline: none;
                         font-size: 15px;
-                        color: rgb(122, 122, 122);
+                        border: none;
+                        transition: 0.3s ease;
+                        &::placeholder {
+                            font-family: $poppins-font;
+                            font-size: 15px;
+                            color: rgb(122, 122, 122);
+                        }
+                        &:hover {
+                            box-shadow: 0 0 1px 1px $primary-color;
+                        }
+                        &:focus {
+                            box-shadow: 0 0 1px 1px $primary-color;
+                        }
                     }
-                    &:hover{
-                        box-shadow: 0 0 1px 1px $primary-color;
+                    .message-textarea {
+                        height: 150px;
+                        resize: none;
                     }
-                    &:focus{
-                        box-shadow: 0 0 1px 1px $primary-color;
+                    .name-error,
+                    .email-error,
+                    .phone-error,
+                    .location-error,
+                    .message-error {
+                        width: 100%;
+                        text-align: left;
+                        color: red;
+                        font-size: 13px;
                     }
                 }
-                textarea{
-                    height: 150px;
-                    resize: none;
-                }
-                .send-btn{
+                .send-btn {
                     cursor: pointer;
                     max-width: 300px;
                     width: 100%;
@@ -93,7 +113,7 @@
                     border-radius: 4px;
                     transition: 0.3s ease;
                     margin-top: 40px;
-                    &:hover{
+                    &:hover {
                         background-color: $hover-color;
                     }
                 }
@@ -102,13 +122,13 @@
     }
 }
 
-@media screen and (max-width: 850px){
-    .contact{
+@media screen and (max-width: 850px) {
+    .contact {
         padding-top: 150px;
-        .contact-container{
-            .contact-info{
+        .contact-container {
+            .contact-info {
                 grid-template-columns: 1fr 1fr;
-                .email{
+                .email {
                     justify-content: flex-start;
                 }
             }
@@ -116,13 +136,13 @@
     }
 }
 
-@media screen and (max-width: 550px){
-    .contact{
+@media screen and (max-width: 550px) {
+    .contact {
         padding-top: 150px;
-        .contact-container{
-            .contact-info{
+        .contact-container {
+            .contact-info {
                 grid-template-columns: 1fr;
-                .phone-number{
+                .phone-number {
                     justify-content: flex-start;
                 }
             }

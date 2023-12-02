@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 export const Orders = () => {
     const [orders, setOrders] = useState();
     const [isLoading, setIsLoading] = useState(true);
-    const token = localStorage.getItem("token");
     const [errorUser, setErrorUser] = useState(false);
+    const token = localStorage.getItem("token");
 
     useEffect(() => {
         if(!token) {
@@ -73,7 +73,7 @@ export const Orders = () => {
                         <span>{orders.length}</span>
                     </div>
                     <div className="overflow-x-auto">
-                        <table>
+                        <table className="orders-list">
                             <thead>
                                 <tr>
                                     <th>Customer</th>

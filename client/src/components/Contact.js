@@ -1,56 +1,52 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import "../styles/Contact.scss";
 import { toast } from "react-toastify";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 export const Contact = () => {
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [phoneNumber, setPhoneNumber] = useState("");
-    const [location, setLocation] = useState("");
-    const [message, setMessage] = useState("");
-    const [errorMessage, setErrorMessage] = useState(false);
+    const formik = useFormik({
+        initialValues: {
+            name: '',
+            email: '',
+            phoneNumber: '',
+            location: '',
+            message: '',
+        },
+        validationSchema: Yup.object({
+            name: Yup.string().required("Please provide your name"),
+            email: Yup.string()
+                .required("Please provide your mail")
+                .email("Please provide valid email"),
+            phoneNumber: Yup.string()
+                .min(10, "Please provide valid phone number")
+                .required("Please provide your phone number"),
+            location: Yup.string().required("Please provide your location"),
+            message: Yup.string().required("Please provide your message"),
+        }),
+        onSubmit: (values) => {
+            const requestOptions = {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    name: values.name,
+                    email: values.email,
+                    phonenumber: Number(values.phoneNumber),
+                    location: values.location,
+                    message: values.message,
+                }),
+            };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (
-            name === "" ||
-            email === "" ||
-            phoneNumber === "" ||
-            location === "" ||
-            message === ""
-        ) {
-            setErrorMessage(true);
-            return;
-        }
-        const requestOptions = {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                name,
-                email,
-                phonenumber: phoneNumber,
-                location,
-                message,
-            }),
-        };
-
-        fetch("http://localhost:5000/api/v4/messages", requestOptions)
-            .then((res) => {
-                setErrorMessage(false);
-                setName("");
-                setEmail("");
-                setPhoneNumber("");
-                setLocation("");
-                setMessage("");
-                toast("Message sent successfully", {
-                    type: "success",
-                    draggable: false,
-                });
-            })
-            .catch((error) => {
-                setErrorMessage(true);
-            });
-    };
+            fetch("http://localhost:5000/api/v4/messages", requestOptions)
+                .then((res) => {
+                    toast("Message sent successfully", {
+                        type: "success",
+                        draggable: false,
+                    });
+                })
+                .catch((error) => {});
+        },
+    });
 
     return (
         <div className="contact">
@@ -60,9 +56,7 @@ export const Contact = () => {
                         <i className="fa-solid fa-location-dot"></i>
                         <div className="location-info">
                             <h3>Location</h3>
-                            <p>
-                                District 9, Ho Chi Minh City
-                            </p>
+                            <p>District 9, Ho Chi Minh City</p>
                         </div>
                     </div>
                     <div className="phone-number">
@@ -81,45 +75,79 @@ export const Contact = () => {
                     </div>
                 </div>
                 <div className="contact-message">
-                    <form onSubmit={handleSubmit}>
-                        <input
-                            type="text"
-                            className="name-input"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            placeholder="Your name"
-                        />
-                        <input
-                            type="text"
-                            className="email-input"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            placeholder="Email"
-                        />
-                        <input
-                            type="text"
-                            className="phonenumber-input"
-                            value={phoneNumber}
-                            onChange={(e) => setPhoneNumber(e.target.value)}
-                            placeholder="Phone number"
-                        />
-                        <input
-                            type="text"
-                            className="location-input"
-                            value={location}
-                            onChange={(e) => setLocation(e.target.value)}
-                            placeholder="Location"
-                        />
-                        <textarea
-                            placeholder="Message"
-                            value={message}
-                            onChange={(e) => setMessage(e.target.value)}
-                        ></textarea>
-                        {errorMessage && (
-                            <p style={{ color: "red" }}>
-                                Please provide necessary informations
-                            </p>
-                        )}
+                    <form onSubmit={formik.handleSubmit} className="contact-form">
+                        <div className="name-container">
+                            <input
+                                type="text"
+                                className="name-input"
+                                name="name"
+                                value={formik.values.name}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                placeholder="Your name"
+                            />
+                            {formik.touched.name && formik.errors.name ? (
+                                <p className="name-error">{formik.errors.name}</p>
+                            ) : null}
+
+                        </div>
+                        <div className="email-container">
+                            <input
+                                type="text"
+                                name="email"
+                                className="email-input"
+                                value={formik.values.email}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                placeholder="Email"
+                            />
+                            {formik.touched.email && formik.errors.email ? (
+                                <p className="email-error">{formik.errors.email}</p>
+                            ) : null}
+                        </div>
+                        <div className="phonenumber-container">
+                            <input
+                                type="text"
+                                name="phoneNumber"
+                                className="phonenumber-input"
+                                value={formik.values.phoneNumber}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                placeholder="Phone number"
+                            />
+                            {formik.touched.phoneNumber &&
+                            formik.errors.phoneNumber ? (
+                                <p className="phone-error">{formik.errors.phoneNumber}</p>
+                            ) : null}
+
+                        </div>
+                        <div className="location-container">
+                            <input
+                                type="text"
+                                name="location"
+                                className="location-input"
+                                value={formik.values.location}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                placeholder="Location"
+                            />
+                            {formik.touched.location && formik.errors.location ? (
+                                <p className="location-error">{formik.errors.location}</p>
+                            ) : null}
+                        </div>
+                        <div className="message-container">
+                            <textarea
+                                placeholder="Message"
+                                name="message"
+                                className="message-textarea"
+                                value={formik.values.message}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                            ></textarea>
+                            {formik.touched.location && formik.errors.message ? (
+                                <p className="message-error">{formik.errors.message}</p>
+                            ) : null}
+                        </div>
                         <button type="submit" className="send-btn">
                             Send
                         </button>

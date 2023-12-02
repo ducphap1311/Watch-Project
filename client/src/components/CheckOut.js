@@ -6,21 +6,15 @@ import { useDispatch } from "react-redux";
 import { clearCart } from "../features/cart/cartSlice";
 import { Link } from "react-router-dom";
 import { Loading } from "./Loading";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 export const CheckOut = () => {
     const { total, cartItems, amount } = useSelector((store) => store.cart);
-    const [name, setName] = useState(
-        localStorage.getItem("username") ? localStorage.getItem("username") : ""
-    );
-    const [city, setCity] = useState("");
-    const [citiesList, setCitiesList] = useState([]);
-    const [district, setDistrict] = useState("");
-    const [districtsList, setDistrictsList] = useState([]);
-    const [ward, setWard] = useState("");
-    const [wardsList, setwardsList] = useState([]);
-    const [address, setAddress] = useState("");
-    const [errorInput, setErrorInput] = useState(false);
     const [errorUser, setErrorUser] = useState(false);
+    const [citiesList, setCitiesList] = useState([]);
+    const [districtsList, setDistrictsList] = useState([]);
+    const [wardsList, setwardsList] = useState([]);
     const token = localStorage.getItem("token");
     const [isLoading, setIsLoading] = useState(true);
     const shippingPrice = 5;
@@ -29,7 +23,7 @@ export const CheckOut = () => {
 
     useEffect(() => {
         authenticateUser();
-        if (!errorUser) getAddressInformations();
+        if (!errorUser) getCitiesInformations();
     }, []);
 
     const authenticateUser = async () => {
@@ -58,7 +52,7 @@ export const CheckOut = () => {
         }
     };
 
-    const getAddressInformations = async () => {
+    const getCitiesInformations = async () => {
         try {
             const response = await fetch(
                 "https://provinces.open-api.vn/api/?depth=3"
@@ -70,68 +64,82 @@ export const CheckOut = () => {
         }
     };
 
-    const chooseCity = (e) => {
-        setCity(e.target.value);
+    const handleCityChange = (e) => {
         const districts = citiesList.filter(
             (add) => add.name === e.target.value
         );
         setDistrictsList(districts[0].districts);
+        formik.handleChange(e);
     };
 
-    const chooseDistrict = (e) => {
-        setDistrict(e.target.value);
+    const handleDistrictChange = (e) => {
         const wards = districtsList.filter(
             (dis) => dis.name === e.target.value
         );
         setwardsList(wards[0].wards);
+        formik.handleChange(e);
     };
 
-    const chooseWard = (e) => {
-        setWard(e.target.value);
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        if (
-            name === "" ||
-            address === "" ||
-            city === "" ||
-            district === "" ||
-            ward === ""
-        ) {
-            setErrorInput(true);
-            return;
-        }
-        const requestOptions = {
-            method: "POST",
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                name: name,
-                address: `${address}, ${ward}, ${district}, ${city}`,
-                orderTotal: total + shippingPrice,
-                cartItems: cartItems,
-                amount: amount,
-            }),
-        };
-        try {
-            const response = await fetch(
-                "http://localhost:5000/api/v3/orders",
-                requestOptions
-            );
-            localStorage.removeItem("cartItems");
-            dispatch(clearCart());
-            if (!response) {
-                throw new Error("something wrong here!");
+    const formik = useFormik({
+        initialValues: {
+            name: localStorage.getItem("username")
+                ? localStorage.getItem("username")
+                : "",
+            city: "",
+            district: "",
+            ward: "",
+            address: "",
+        },
+        validationSchema: Yup.object({
+            name: Yup.string().required("Please provide your name"),
+            city: Yup.string().required("Please provide city"),
+            district: Yup.string().required("Please provide district"),
+            ward: Yup.string().required("Please provide ward"),
+            address: Yup.string().required(
+                "Please provide address detail (house number, street name...)"
+            ),
+        }),
+        onSubmit: async (values) => {
+            const requestOptions = {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name: values.name,
+                    address: `${values.address}, ${values.ward}, ${values.district}, ${values.city}`,
+                    orderTotal: total + shippingPrice,
+                    cartItems: cartItems,
+                    amount: amount,
+                }),
+            };
+            try {
+                const response = await fetch(
+                    "http://localhost:5000/api/v3/orders",
+                    requestOptions
+                );
+                if (!response) {
+                    throw new Error("something wrong here!");
+                }
+                localStorage.removeItem("cartItems");
+                dispatch(clearCart());
+                navigate("/orders");
+            } catch (error) {
+                console.log(error);
             }
-            navigate("/orders");
-        } catch (error) {
-            console.log(error);
-        }
-    };
 
+            const putRequestOptions = {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // totalAmount: totalAmount - amount,
+                }),
+            }
+        },
+    });
     if (isLoading) {
         return <Loading />;
     } else if (!token || errorUser) {
@@ -161,19 +169,28 @@ export const CheckOut = () => {
             <div className="checkout-information-container">
                 <div className="checkout-information">
                     <p>Shipping Information</p>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={formik.handleSubmit}>
                         <div className="name-information">
                             <label>Your Name</label>
                             <input
                                 type="text"
                                 name="name"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
+                                value={formik.values.name}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                             />
+                            {formik.touched.name && formik.errors.name ? (
+                                <p className="name-error">{formik.errors.name}</p>
+                            ) : null}
                         </div>
                         <div className="city-information">
                             <label>City</label>
-                            <select value={city} onChange={chooseCity}>
+                            <select
+                                name="city"
+                                value={formik.values.city}
+                                onChange={handleCityChange}
+                                onBlur={formik.handleBlur}
+                            >
                                 <option value="">Choose city</option>
                                 {citiesList.map((city, index) => {
                                     return (
@@ -183,10 +200,18 @@ export const CheckOut = () => {
                                     );
                                 })}
                             </select>
+                            {formik.touched.city && formik.errors.city ? (
+                                <p className="city-error">{formik.errors.city}</p>
+                            ) : null}
                         </div>
                         <div className="district-information">
                             <label>District</label>
-                            <select value={district} onChange={chooseDistrict}>
+                            <select
+                                value={formik.values.district}
+                                onChange={handleDistrictChange}
+                                name="district"
+                                onBlur={formik.handleBlur}
+                            >
                                 <option value="">Choose district</option>
                                 {districtsList.map((district, index) => {
                                     return (
@@ -199,10 +224,18 @@ export const CheckOut = () => {
                                     );
                                 })}
                             </select>
+                            {formik.touched.district && formik.errors.district ? (
+                                <p className="district-error">{formik.errors.district}</p>
+                            ) : null}
                         </div>
                         <div className="ward-information">
                             <label>Ward</label>
-                            <select value={ward} onChange={chooseWard}>
+                            <select
+                                value={formik.values.ward}
+                                onChange={formik.handleChange}
+                                name="ward"
+                                onBlur={formik.handleBlur}
+                            >
                                 <option value="">Choose ward</option>
                                 {wardsList.map((ward, index) => {
                                     return (
@@ -212,27 +245,23 @@ export const CheckOut = () => {
                                     );
                                 })}
                             </select>
+                            {formik.touched.ward && formik.errors.ward ? (
+                                <p className="ward-error">{formik.errors.ward}</p>
+                            ) : null}
                         </div>
                         <div className="address-information">
                             <label>Address Detail</label>
                             <input
                                 type="text"
                                 name="address"
-                                value={address}
-                                onChange={(e) => setAddress(e.target.value)}
+                                value={formik.values.address}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                             />
+                            {formik.touched.address && formik.errors.address ? (
+                                <p className="address-error">{formik.errors.address}</p>
+                            ) : null}
                         </div>
-                        {errorInput && (
-                            <p
-                                style={{
-                                    color: "red",
-                                    fontSize: "14px",
-                                    marginBottom: "20px",
-                                }}
-                            >
-                                Please provide necessary informations
-                            </p>
-                        )}
                         <button type="submit">place your order</button>
                     </form>
                 </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Register.scss";
 import { useNavigate } from "react-router-dom";
@@ -30,46 +30,18 @@ import * as Yup from "yup";
 
 export const Register = () => {
     const navigate = useNavigate();
-    // const [userName, setUserName] = useState("");
-    // const [email, setEmail] = useState("");
-    // const [password, setPassword] = useState("");
-    const [errorRegister, setErrorRegister] = useState(false);
+    const [registerStatus, setRegisterStatus] = useState();
+    const [showPassword, setShowPassword] = useState(false);
+    const passwordRef = useRef();
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     if (!userName || !password || !email) {
-    //         setErrorRegister(true);
-    //         return;
-    //     }
-    //     const requestOptions = {
-    //         method: "POST",
-    //         headers: { "Content-Type": "application/json" },
-    //         body: JSON.stringify({
-    //             username: userName,
-    //             email: email,
-    //             password: password,
-    //         }),
-    //     };
+    useEffect(() => {
+        if (showPassword) {
+            passwordRef.current.type = "text";
+        } else {
+            passwordRef.current.type = "password";
+        }
+    }, [showPassword]);
 
-    //     try {
-    //         const response = await fetch(
-    //             "http://localhost:5000/api/v2/register",
-    //             requestOptions
-    //         );
-    //         console.log(response);
-    //         const responseData = await response.json();
-    //         const { token, username } = responseData;
-    //         if (!username || !token) {
-    //             throw new Error("Invalid email or password");
-    //         }
-    //         localStorage.setItem("token", token);
-    //         localStorage.setItem("username", username);
-    //         navigate("/");
-    //     } catch (error) {
-    //         setErrorRegister(true);
-    //         console.log(error);
-    //     }
-    // };
     const formik = useFormik({
         initialValues: {
             username: "",
@@ -88,6 +60,7 @@ export const Register = () => {
                 .required("Password required"),
         }),
         onSubmit: async (values) => {
+            setRegisterStatus("pending");
             const requestOptions = {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -103,7 +76,7 @@ export const Register = () => {
                     "http://localhost:5000/api/v2/register",
                     requestOptions
                 );
-                if(!response.ok){
+                if (!response.ok) {
                     throw new Error("Invalid email or password");
                 }
                 const responseData = await response.json();
@@ -112,16 +85,17 @@ export const Register = () => {
                 localStorage.setItem("username", username);
                 navigate("/");
             } catch (error) {
-                setErrorRegister(true);
-                // console.log(error);
+                setRegisterStatus("rejected");
             }
         },
     });
     return (
         <div className="register">
-            <form onSubmit={formik.handleSubmit}>
+            <form onSubmit={formik.handleSubmit} className="register-form">
                 <h2 className="register-title">Register</h2>
-                <p className="register-subtitle">Please register using account detail bellow.</p>
+                <p className="register-subtitle">
+                    Please register using account detail bellow.
+                </p>
                 <div className="username-container">
                     <input
                         type="text"
@@ -164,6 +138,7 @@ export const Register = () => {
                         value={formik.values.password}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
+                        ref={passwordRef}
                     />
                     {formik.touched.password && formik.errors.password ? (
                         <p className="password-error">
@@ -171,9 +146,25 @@ export const Register = () => {
                         </p>
                     ) : null}
                 </div>
-                {errorRegister && (
-                    <p className="user-error">Invalid email or email used</p>
-                )}
+                <div className="show-password-container">
+                    <input
+                        type="checkbox"
+                        id="checkbox"
+                        checked={showPassword}
+                        onChange={(e) => setShowPassword(!showPassword)}
+                        className="checkbox-show-password"
+                    />
+                    <label htmlFor="checkbox" className="checkbox-show-password-label">Show password</label>
+                </div>
+                {registerStatus === "rejected" ? (
+                    <p className="register-rejected">Invalid email or email used</p>
+                ) : registerStatus === "pending" ? (
+                    <p
+                        className="register-pending"
+                    >
+                        Loading...
+                    </p>
+                ) : null}
                 <button type="submit" className="register-btn">
                     Register
                 </button>
@@ -184,43 +175,6 @@ export const Register = () => {
                     </Link>
                 </p>
             </form>
-            {/* <form onSubmit={handleSubmit}>
-                <h2 className="register-title">Register</h2>
-                <p>Please register using account detail bellow.</p>
-                <input
-                    type="text"
-                    placeholder="User Name"
-                    className="username-input"
-                    value={userName}
-                    onChange={(e) => setUserName(e.target.value)}
-                />
-                <input
-                    type="email"
-                    placeholder="Email Address"
-                    className="email-input"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    className="password-input"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                {errorRegister && (
-                    <p style={{ color: "red" }}>Invalid Informations</p>
-                )}
-                <button type="submit" className="register-btn">
-                    Register
-                </button>
-                <p>
-                    Already have an Account?
-                    <Link to="/login" className="link-to-login">
-                        Login now
-                    </Link>
-                </p>
-            </form> */}
         </div>
     );
 };

@@ -40,7 +40,7 @@ export const Navbar = () => {
     };
 
     useEffect(() => {
-        searchFocus.current.focus();
+        // searchFocus.current.focus();
     });
 
     useEffect(() => {
@@ -117,6 +117,7 @@ export const Navbar = () => {
                                         showDropDown && "show-dropdown"
                                     }`}
                                 >
+                                    <Link to="/profile">My Profile</Link>
                                     <Link to="/orders">My Orders</Link>
                                     <Link to="/login" onClick={handleLogout}>
                                         Logout

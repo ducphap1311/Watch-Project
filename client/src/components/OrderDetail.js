@@ -84,7 +84,7 @@ export const OrderDetail = () => {
                         </p>
                     </div>
                     <div className="overflow-x-auto">
-                        <table>
+                        <table className="order-info">
                             <thead>
                                 <tr>
                                     <th>Products</th>

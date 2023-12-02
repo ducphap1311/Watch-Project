@@ -9,13 +9,15 @@ import { addItem } from "../features/cart/cartSlice";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector";
 
 export const SingleProduct = () => {
     const { id } = useParams();
     const [singleProduct, setSingleProduct] = useState();
     const [amount, setAmount] = useState(1);
     const dispatch = useDispatch();
-    
+    const {cartItems} = useSelector(store => store.cart)
+
     const getSingleProduct = async () => {
         try {
             const response = await fetch(
@@ -64,6 +66,56 @@ export const SingleProduct = () => {
         });
     };
 
+    const addToCart = (_id, amount, totalAmount) => {
+        if (amount > totalAmount || totalAmount === 0) {
+            toast("Not enough products to add", {
+                type: "error",
+                draggable: false,
+            });
+            return;
+        } else  {
+            let flag = false;
+            cartItems.forEach(item => {
+                if(item._id === _id){
+                    if(item.amount + amount > totalAmount){
+                        flag = true;
+                        toast("Not enough products to add", {
+                            type: "error",
+                            draggable: false,
+                        });
+                    }
+                }
+            })
+            if(!flag){
+                toast("Add to cart successfully", {
+                    type: "success",
+                    draggable: false,
+                });
+                dispatch(addItem({ id: _id, amount, totalAmount }));
+            } else {
+                return;
+            }
+        }
+        
+        // console.log(JSON.stringify({totalAmount: totalAmount - amount}));
+        // const requestOptions = {
+        //     method: "PUT",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify({
+        //         totalAmount: totalAmount - amount,
+        //     }),
+        // };
+        // fetch(`http://localhost:5000/api/v1/products/${_id}`, requestOptions)
+        // .then((res) => {
+        //         getSingleProduct()
+        //     })
+        //     .catch((error) => {console.log(error);});
+    };
+
+    const buyNow = () => {};
+
     useEffect(() => {
         getSingleProduct();
     }, [id]);
@@ -71,7 +123,8 @@ export const SingleProduct = () => {
     if (!singleProduct) {
         return <Loading />;
     } else {
-        const { _id, images, name, price, description } = singleProduct;
+        const { _id, images, name, price, description, totalAmount } =
+            singleProduct;
         return (
             <div className="single-product">
                 <div className="single-product-container">
@@ -93,6 +146,7 @@ export const SingleProduct = () => {
                     </Slider>
                     <div className="product-info-container">
                         <p className="product-name">{name}</p>
+                        {totalAmount > 0 ? <p style={{margin: "10px 0", fontSize: "15px", color: "#686d7d"}}>{totalAmount} available products</p> : <p>Out of stock</p>}
                         <p className="product-price">
                             <i className="fa-solid fa-dollar-sign"></i>
                             {price}
@@ -109,17 +163,11 @@ export const SingleProduct = () => {
                         </div>
                         <button
                             className="add-btn"
-                            onClick={() => {
-                                dispatch(addItem({ id: _id, amount }));
-                                toast("Add to cart successfully!", {
-                                    type: "success",
-                                    draggable: false,
-                                });
-                            }}
+                            onClick={() => addToCart(_id, amount, totalAmount)}
                         >
                             Add to cart
                         </button>
-                        <Link to='/cart' className="buy-btn-container">
+                        <Link to="/cart" className="buy-btn-container">
                             <button
                                 className="buy-btn"
                                 onClick={() => {

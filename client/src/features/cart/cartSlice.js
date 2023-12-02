@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
 const initialState = {
     cartItems: localStorage.getItem("cartItems")
@@ -86,16 +87,18 @@ const cartSlice = createSlice({
         },
 
         getTotalAmount: (state) => {
-            let { amount, total } = state.cartItems.reduce(
-                (a, c) => {
-                    a.amount += c.amount;
-                    a.total += c.amount * c.price;
-                    return a;
-                },
-                { amount: 0, total: 0 }
-            );
-            state.amount = amount;
-            state.total = total;
+                let { amount, total } = state.cartItems.reduce(
+                    (a, c) => {
+                        // console.log(c);
+                        a.amount += c.amount;
+                        a.total += c.amount * c.price;
+                        return a;
+                    },
+                    { amount: 0, total: 0 }
+                );
+                state.amount = amount;
+                state.total = total;
+            
         },
 
         clearCart: (state) => {

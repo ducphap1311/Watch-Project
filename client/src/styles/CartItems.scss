@@ -252,6 +252,7 @@
             .item-info{
                 margin: 10px 0;
                 .product-info1{
+                    flex: 1;
                     @include flex(row, space-between, flex-start);
                     .product-name{
                         font-size: 16px;

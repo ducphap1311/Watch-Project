@@ -12,7 +12,7 @@ export const CartItems = () => {
     const dispatch = useDispatch();
     const { total, cartItems } = useSelector((store) => store.cart);
     const token = localStorage.getItem("token");
-    
+
     if (cartItems.length !== 0) {
         return (
             <div className="cart-items">
@@ -139,7 +139,9 @@ export const CartItems = () => {
                                 <button>Check-out</button>
                             </Link>
                         ) : (
-                            <Link to="/login">
+                            <Link to="/login" onClick={() => {
+                                localStorage.removeItem('username')
+                            }}>
                                 <button>Login</button>
                             </Link>
                         )}

@@ -6,11 +6,11 @@
     height: 100vh;
     @include flex(row, center, center);
     padding-top: 200px;
-    form{
+    
+    .register-form{
         height: fit-content;
         width: 544px;
         padding: 40px;
-        // @include flex(column, flex-start, center);
         box-shadow: 0px 0px 25px 10px #F8F8FB;
         .register-title{
             font-size: 32px;
@@ -26,30 +26,15 @@
         }
         
         .username-container,
-        .email-container,
-        .password-container{
+        .email-container{
             margin-bottom: 23px;
         }
-        .username-error,
-        .email-error,
-        .password-error{
-            text-align: left;
-            color: red;
-            font-size: 13px;
-            margin-top: 5px;
-            margin-bottom: 0;
+        .password-container{
+            margin-bottom: 10px;
         }
-        .user-error{
-            color: red;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .options{
-            font-size: 17px;
-            color: #9096B2;
-            text-align: center;
-        }
-        input{
+        .email-input,
+        .username-input,
+        .password-input{
             outline: none;
             border-radius: 2px;
             border: 1px solid #C2C5E1;
@@ -69,26 +54,55 @@
         .username-input{
             padding: 15px 13px;
             width: 100%;
-            // margin-bottom: 23px;
             border-radius: 5px;
         }
         .email-input{
             padding: 15px 13px;
             width: 100%;
-            // margin-bottom: 23px;
             border-radius: 5px;
         }
         .password-input{
             padding: 15px 13px;
             width: 100%;
-            // margin-bottom: 23px;
             border-radius: 5px;
         }
         .password-confirm-input{
             padding: 15px 13px;
             width: 100%;
-            // margin-bottom: 23px;
             border-radius: 5px;
+        }
+        .username-error,
+        .email-error,
+        .password-error{
+            text-align: left;
+            color: red;
+            font-size: 13px;
+            margin-top: 5px;
+            margin-bottom: 0;
+        }
+        .show-password-container{
+            display: flex;
+            align-items: center;
+            margin-bottom: 23px;
+            width: 100%;
+            color: #9096B2;
+            .checkbox-show-password{
+                cursor: pointer;
+                margin-right: 5px;
+            }
+            .checkbox-show-password-label{
+                cursor: pointer;
+            }
+        }
+        .register-rejected{
+            color: red;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .register-pending{
+            color: #9096B2;
+            text-align: center;
+            margin-bottom: 15px
         }
         .register-btn{
             border-radius: 5px;
@@ -105,6 +119,11 @@
                 background-color: $hover-color;
             }
         }
+        .options{
+            font-size: 17px;
+            color: #9096B2;
+            text-align: center;
+        }
         .link-to-login{
             text-decoration: none;
             color: $primary-color;
@@ -118,6 +137,10 @@
 
 @media screen and (max-width: 850px){
     .register{
-        padding-top: 150px;
+        padding-top: 100px;
+        margin-bottom: 100px;
+        .register-form{
+            padding: 15px;
+        }
     }
 }
