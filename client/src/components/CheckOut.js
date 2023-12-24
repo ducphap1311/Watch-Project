@@ -20,10 +20,14 @@ export const CheckOut = () => {
     const shippingPrice = 5;
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const [needUpdatingProducts, setNeedUpdatingProducts] = useState();
 
     useEffect(() => {
         authenticateUser();
-        if (!errorUser) getCitiesInformations();
+        if (!errorUser) {
+            getCitiesInformations();
+            getNeedUpdatingProducts();
+        }
     }, []);
 
     const authenticateUser = async () => {
@@ -50,6 +54,22 @@ export const CheckOut = () => {
             setErrorUser(true);
             setIsLoading(false);
         }
+    };
+
+    const getNeedUpdatingProducts = () => {
+        let idsList = cartItems.map((item) => {
+            return item._id;
+        });
+        let productsList = [];
+        idsList.forEach(async (id) => {
+            const response = await fetch(
+                `http://localhost:5000/api/v1/products/${id}`
+            );
+            const responseData = await response.json();
+            const data = responseData.product;
+            productsList.push(data);
+        });
+        setNeedUpdatingProducts(productsList);
     };
 
     const getCitiesInformations = async () => {
@@ -80,6 +100,35 @@ export const CheckOut = () => {
         formik.handleChange(e);
     };
 
+    const updateProducts = async () => {
+        needUpdatingProducts.forEach((product) => {
+            cartItems.forEach((item) => {
+                if (product._id === item._id) {
+                    try {
+                        const putRequestOptions = {
+                            method: "PUT",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({
+                                totalAmount: product.totalAmount - item.amount,
+                            }),
+                        };
+                        fetch(
+                            `http://localhost:5000/api/v1/products/${product._id}`,
+                            putRequestOptions
+                        )
+                            .then((res) => {})
+                            .catch((error) => {
+                                console.log(error);
+                            });
+                    } catch (error) {
+                        console.log(error);
+                    }
+                }
+            });
+        });
+    };
     const formik = useFormik({
         initialValues: {
             name: localStorage.getItem("username")
@@ -124,19 +173,10 @@ export const CheckOut = () => {
                 }
                 localStorage.removeItem("cartItems");
                 dispatch(clearCart());
+                updateProducts();
                 navigate("/orders");
             } catch (error) {
                 console.log(error);
-            }
-
-            const putRequestOptions = {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    // totalAmount: totalAmount - amount,
-                }),
             }
         },
     });
@@ -180,7 +220,9 @@ export const CheckOut = () => {
                                 onBlur={formik.handleBlur}
                             />
                             {formik.touched.name && formik.errors.name ? (
-                                <p className="name-error">{formik.errors.name}</p>
+                                <p className="name-error">
+                                    {formik.errors.name}
+                                </p>
                             ) : null}
                         </div>
                         <div className="city-information">
@@ -201,7 +243,9 @@ export const CheckOut = () => {
                                 })}
                             </select>
                             {formik.touched.city && formik.errors.city ? (
-                                <p className="city-error">{formik.errors.city}</p>
+                                <p className="city-error">
+                                    {formik.errors.city}
+                                </p>
                             ) : null}
                         </div>
                         <div className="district-information">
@@ -224,8 +268,11 @@ export const CheckOut = () => {
                                     );
                                 })}
                             </select>
-                            {formik.touched.district && formik.errors.district ? (
-                                <p className="district-error">{formik.errors.district}</p>
+                            {formik.touched.district &&
+                            formik.errors.district ? (
+                                <p className="district-error">
+                                    {formik.errors.district}
+                                </p>
                             ) : null}
                         </div>
                         <div className="ward-information">
@@ -246,7 +293,9 @@ export const CheckOut = () => {
                                 })}
                             </select>
                             {formik.touched.ward && formik.errors.ward ? (
-                                <p className="ward-error">{formik.errors.ward}</p>
+                                <p className="ward-error">
+                                    {formik.errors.ward}
+                                </p>
                             ) : null}
                         </div>
                         <div className="address-information">
@@ -259,7 +308,9 @@ export const CheckOut = () => {
                                 onBlur={formik.handleBlur}
                             />
                             {formik.touched.address && formik.errors.address ? (
-                                <p className="address-error">{formik.errors.address}</p>
+                                <p className="address-error">
+                                    {formik.errors.address}
+                                </p>
                             ) : null}
                         </div>
                         <button type="submit">place your order</button>

@@ -174,10 +174,12 @@
                     }
                 }
                 .amount{
-                    margin: 0px 15px;
                     font-size: 20px;
                     color: $primary-color;
                     font-weight: bold;
+                    text-align: center;
+                    border: none;
+                    width: 60px;
                 }
             }
             .buy-btn-container{

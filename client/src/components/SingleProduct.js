@@ -8,15 +8,16 @@ import "../styles/SingleProduct.scss";
 import { addItem } from "../features/cart/cartSlice";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
-import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
 export const SingleProduct = () => {
     const { id } = useParams();
     const [singleProduct, setSingleProduct] = useState();
     const [amount, setAmount] = useState(1);
     const dispatch = useDispatch();
-    const {cartItems} = useSelector(store => store.cart)
+    const { cartItems } = useSelector((store) => store.cart);
+    const navigate = useNavigate();
 
     const getSingleProduct = async () => {
         try {
@@ -53,8 +54,17 @@ export const SingleProduct = () => {
         initialSlide: 0,
     };
 
-    const increaseAmount = () => {
-        setAmount(amount + 1);
+    const increaseAmount = (totalAmount) => {
+        console.log(totalAmount);
+        if (totalAmount === 0) {
+            return;
+        }
+        setAmount((prevAmount) => {
+            if (prevAmount === totalAmount) {
+                return totalAmount;
+            }
+            return prevAmount + 1;
+        });
     };
 
     const decreaseAmount = () => {
@@ -67,26 +77,36 @@ export const SingleProduct = () => {
     };
 
     const addToCart = (_id, amount, totalAmount) => {
-        if (amount > totalAmount || totalAmount === 0) {
+        if (totalAmount === 0) {
+            toast("The product is out of stock", {
+                type: "error",
+                draggable: false,
+            });
+            return;
+        }
+        if (amount > totalAmount) {
             toast("Not enough products to add", {
                 type: "error",
                 draggable: false,
             });
             return;
-        } else  {
+        } else {
             let flag = false;
-            cartItems.forEach(item => {
-                if(item._id === _id){
-                    if(item.amount + amount > totalAmount){
+            cartItems.forEach((item) => {
+                if (item._id === _id) {
+                    if (item.amount + amount > totalAmount) {
                         flag = true;
-                        toast("Not enough products to add", {
-                            type: "error",
-                            draggable: false,
-                        });
+                        toast(
+                            "The selected quantity exceed your purchase limit",
+                            {
+                                type: "error",
+                                draggable: false,
+                            }
+                        );
                     }
                 }
-            })
-            if(!flag){
+            });
+            if (!flag) {
                 toast("Add to cart successfully", {
                     type: "success",
                     draggable: false,
@@ -96,25 +116,63 @@ export const SingleProduct = () => {
                 return;
             }
         }
-        
-        // console.log(JSON.stringify({totalAmount: totalAmount - amount}));
-        // const requestOptions = {
-        //     method: "PUT",
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //     },
-        //     body: JSON.stringify({
-        //         totalAmount: totalAmount - amount,
-        //     }),
-        // };
-        // fetch(`http://localhost:5000/api/v1/products/${_id}`, requestOptions)
-        // .then((res) => {
-        //         getSingleProduct()
-        //     })
-        //     .catch((error) => {console.log(error);});
     };
 
-    const buyNow = () => {};
+    const buyNow = (_id, amount, totalAmount) => {
+        if (totalAmount === 0) {
+            toast("The product is out of stock", {
+                type: "error",
+                draggable: false,
+            });
+            return;
+        }
+        if (amount > totalAmount) {
+            toast("Not enough products to add", {
+                type: "error",
+                draggable: false,
+            });
+            return;
+        } else {
+            let flag = false;
+            cartItems.forEach((item) => {
+                if (item._id === _id) {
+                    if (item.amount + amount > totalAmount) {
+                        flag = true;
+                        toast(
+                            "The selected quantity exceed your purchase limit",
+                            {
+                                type: "error",
+                                draggable: false,
+                            }
+                        );
+                    }
+                }
+            });
+            if (!flag) {
+                toast("Add to cart successfully", {
+                    type: "success",
+                    draggable: false,
+                });
+                dispatch(addItem({ id: _id, amount, totalAmount }));
+                navigate('/cart')
+            } else {
+                return;
+            }
+        }
+    };
+
+    const handleAmountChange = (e, totalAmount) => {
+        let numOfAmount = Number(e.target.value);
+        if (totalAmount === 0) return;
+        if (isNaN(numOfAmount)) return;
+        if (numOfAmount > totalAmount) {
+            setAmount(totalAmount);
+        } else if (numOfAmount <= 0) {
+            return;
+        } else {
+            setAmount(numOfAmount);
+        }
+    };
 
     useEffect(() => {
         getSingleProduct();
@@ -146,7 +204,27 @@ export const SingleProduct = () => {
                     </Slider>
                     <div className="product-info-container">
                         <p className="product-name">{name}</p>
-                        {totalAmount > 0 ? <p style={{margin: "10px 0", fontSize: "15px", color: "#686d7d"}}>{totalAmount} available products</p> : <p>Out of stock</p>}
+                        {totalAmount > 0 ? (
+                            <p
+                                style={{
+                                    margin: "10px 0",
+                                    fontSize: "15px",
+                                    color: "green",
+                                }}
+                            >
+                                {totalAmount} available products
+                            </p>
+                        ) : (
+                            <p
+                                style={{
+                                    margin: "10px 0",
+                                    fontSize: "15px",
+                                    color: "red",
+                                }}
+                            >
+                                Out of stock
+                            </p>
+                        )}
                         <p className="product-price">
                             <i className="fa-solid fa-dollar-sign"></i>
                             {price}
@@ -156,8 +234,15 @@ export const SingleProduct = () => {
                             <button onClick={decreaseAmount}>
                                 <i className="fa-solid fa-minus"></i>
                             </button>
-                            <p className="amount">{amount}</p>
-                            <button onClick={increaseAmount}>
+                            <input
+                                type="text"
+                                className="amount"
+                                value={amount}
+                                onChange={(e) =>
+                                    handleAmountChange(e, totalAmount)
+                                }
+                            />
+                            <button onClick={() => increaseAmount(totalAmount)}>
                                 <i className="fa-solid fa-plus"></i>
                             </button>
                         </div>
@@ -167,20 +252,14 @@ export const SingleProduct = () => {
                         >
                             Add to cart
                         </button>
-                        <Link to="/cart" className="buy-btn-container">
+                        <div className="buy-btn-container">
                             <button
                                 className="buy-btn"
-                                onClick={() => {
-                                    dispatch(addItem({ id: _id, amount }));
-                                    toast("Add to cart successfully!", {
-                                        type: "success",
-                                        draggable: false,
-                                    });
-                                }}
+                                onClick={() => buyNow(_id, amount, totalAmount)}
                             >
                                 Buy now
                             </button>
-                        </Link>
+                        </div>
                     </div>
                 </div>
             </div>
