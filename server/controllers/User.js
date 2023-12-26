@@ -85,9 +85,9 @@ const sendEmail = async (req, res) => {
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
     const msg = {
         to: req.body.email, // Change to your recipient
-        from: { name: "DH Sneaker", email: "hophap1311@gmail.com" }, // Change to your verified sender
+        from: { name: "Mona Watch", email: "hophap1311@gmail.com" }, // Change to your verified sender
         subject: "Reset password",
-        text: `Reset your password here http://localhost:3000/reset-password/${req.body.token}`,
+        text: `Reset your password here https://watch-api-project.vercel.app/reset-password/${req.body.token}`,
     };
     const info = await sgMail.send(msg);
     res.status(200).json({ info });
